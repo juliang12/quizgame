@@ -1,10 +1,13 @@
+import "./App.css";
+import Header from "./components/header/Header";
+import Play from "./components/play/Play";
 
-import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      <h1>APP</h1>
+     <div className="App">
+      <Header/>
+      <Play/>
     </div>
   );
 }
