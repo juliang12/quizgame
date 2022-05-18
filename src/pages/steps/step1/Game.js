@@ -3,7 +3,7 @@ import { createUserAdapter } from "../../../adapters";
 import QuestionsButtons from "../../../components/questionsButtons/QuestionsButtons";
 import CountDown from "../../../components/countdown/CountDown";
 import NextQuestion from "../../../components/nextQuestion/NextQuestion";
-import { getApi } from "../../../components/services/public.services";
+import { getApi } from "../../../services/public.services";
 import { useFetch } from "../../../hooks/useFetch";
 import handleSuffle from "../../../utils/util_random";
 import textEdit from "../../../utils/util_textEdit";
