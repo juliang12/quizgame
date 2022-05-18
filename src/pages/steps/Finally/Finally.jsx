@@ -9,7 +9,7 @@ const Finally = ({ score, setCurrentStep, currentStep, setScore }) => {
   };
   return (
     <div className={style.container}>
-      <h1>Game Finally</h1>
+      <h1>Game Finalized</h1>
       <h3>Your Score is:</h3>
       <h4>{score}</h4>
       <div>

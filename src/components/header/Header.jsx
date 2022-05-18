@@ -8,7 +8,7 @@ const Header = () => {
       <div className="icon-arrow">
         <AiOutlineArrowLeft />
       </div>
-      <h2>TestShow</h2>
+      <h2>QUIZ APP</h2>
     </div>
   );
 };
