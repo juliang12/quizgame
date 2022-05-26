@@ -1,54 +1,55 @@
 import React from "react";
-import { handleCheck, handleSelect } from "../../pages/steps/handlers";
 import textEdit from "../../utils/util_textEdit";
+import "../../pages/steps/step1/Game.css";
+import { handleSelect, resetTime } from "../../pages/steps/handlers";
 
 const QuestionsButtons = ({
-  index,
+  setDuration,
   select,
-  item,
   setSelect,
   setCurrentStep,
   currentStep,
   setShow,
-  setStop,
-  correct,
-  setScore,
-  score,
   timer,
+  setTimer,
+  option: { question, correct_answer, answers },
 }) => {
-  const LimitTime = () => {
-    if (item === correct && timer === 0) {
+  const LimitTime = (item) => {
+    if (item === correct_answer && timer === 0) {
       return "correct";
-    } else if (item !== correct && timer === 0) {
+    } else if (item !== correct_answer && timer === 0) {
       return "incorrect";
+    }
+  };
+
+  const handleCheck = (item) => {
+    setSelect(item);
+    if (item === correct_answer) {
+      setTimeout(() => {
+        setCurrentStep(currentStep + 1);
+        resetTime(setTimer);
+        setSelect();
+      }, 1000);
+    } else {
+      setShow(true);
     }
   };
 
   return (
     <div>
-      <button
-        disabled={select || timer === 0}
-        key={index}
-        className={`buttons ${LimitTime()} ${
-          select && handleSelect(item, select, correct, timer)
-        }`}
-        onClick={(e) =>
-          handleCheck(
-            item,
-            setSelect,
-            setCurrentStep,
-            currentStep,
-            setShow,
-            setStop,
-            correct,
-            select,
-            setScore,
-            score
-          )
-        }
-      >
-        {textEdit(item)}
-      </button>
+      {answers &&
+        answers?.map((item, index) => (
+          <button
+            disabled={select || timer === 0}
+            key={index}
+            className={`buttons ${
+              select && handleSelect(item, select, correct_answer)
+            } ${LimitTime}}`}
+            onClick={() => handleCheck(item)}
+          >
+            {textEdit(item)}
+          </button>
+        ))}
     </div>
   );
 };

@@ -1,8 +1,8 @@
 import React from "react";
-import Button from "../../../components/button/Button";
-import style from "./Finally.module.css";
+import { Button } from "../../../components";
+import style from "./Finalized.module.css";
 
-const Finally = ({ score, setCurrentStep, currentStep, setScore }) => {
+const Finalized = ({ score, setCurrentStep, currentStep, setScore }) => {
   const PlayAgain = () => {
     setScore((score = 0));
     setCurrentStep((currentStep = 0));
@@ -19,4 +19,4 @@ const Finally = ({ score, setCurrentStep, currentStep, setScore }) => {
   );
 };
 
-export default Finally;
+export default Finalized;

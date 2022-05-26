@@ -1,57 +1,28 @@
-export const handleCheck = (
-  item,
-  setSelect,
-  setCurrentStep,
-  currentStep,
-  setShow,
-  setStop,
-  isCorrect, 
-  select,
-  setScore,
-  score,
- 
-) => {
-  setSelect(item);
-  if (item === isCorrect) {
-    setTimeout(() => {
-      setCurrentStep(currentStep + 1);
-      setScore( score + 3);
-      setShow(false);
-      setSelect();
-    }, 1000);
-  } else {
-    setScore( score - 3);
-    setStop(false);
-    setShow(true);
+export const resetTime = (setTimer) => {
+  setTimer((prev) => prev + 1);
+};
+
+export const handleSelect = (item, select, correct_answer) => {
+  if (select === item && item === correct_answer) {
+    return "correct";
+  } else if (select === item && item !== correct_answer) {
+    return "incorrect";
+  } else if (item === correct_answer) {
+    return "correct";
   }
 };
 
 export const nextQuestion = (
-  show,
   setCurrentStep,
   currentStep,
-  setStop,
   setSelect,
   setShow,
-  timer
+  resetTime,
+  setTimer,
+  
 ) => {
-  if (show) {
-    setCurrentStep(currentStep + 1);
-    setSelect();
-    setStop(true);
-    setShow(false)
-  }else if(timer === 0){
-    setCurrentStep(currentStep + 1)
-  }
+  setCurrentStep(currentStep + 1);
+  setSelect();
+  resetTime(setTimer);
+  setShow(false);
 };
-
-
-export const handleSelect = (i, select, correct)=>{
-  if(i === select && select === correct){
-    return "correct"
-  }else if(i  !== correct){
-    return "incorrect"
-  }else if(i === correct){
-    return "correct"
-  }
-}
