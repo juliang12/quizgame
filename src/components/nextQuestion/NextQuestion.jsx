@@ -1,8 +1,10 @@
 import React from "react";
-import { nextQuestion } from "../../pages/steps/handlers";
+import { nextQuestion, resetTime } from "../../pages/steps/handlers";
 import Button from "../button/Button";
 
 const NextQuestion = ({
+  duration,
+  setDuration,
   show,
   setCurrentStep,
   currentStep,
@@ -10,19 +12,19 @@ const NextQuestion = ({
   setSelect,
   setShow,
   timer,
+  setTimer,
 }) => {
   return (
     <div>
       <Button
         onClick={(e) =>
           nextQuestion(
-            show,
             setCurrentStep,
             currentStep,
-            setStop,
             setSelect,
             setShow,
-            timer
+            resetTime,
+            setTimer
           )
         }
         className="nextButton"
