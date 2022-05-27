@@ -1,31 +1,16 @@
-import React from "react";
-import { nextQuestion, resetTime } from "../../pages/steps/handlers";
+import React, { useContext } from "react";
+import QuizContext from "../../context/QuizContext";
+import { nextQuestion } from "../../pages/steps/handlers";
 import Button from "../button/Button";
 
-const NextQuestion = ({
-  duration,
-  setDuration,
-  show,
-  setCurrentStep,
-  currentStep,
-  setStop,
-  setSelect,
-  setShow,
-  timer,
-  setTimer,
-}) => {
+const NextQuestion = ({ setCurrentStep, currentStep, setShow, setKey }) => {
+  const { setSelect } = useContext(QuizContext);
+
   return (
     <div>
       <Button
-        onClick={(e) =>
-          nextQuestion(
-            setCurrentStep,
-            currentStep,
-            setSelect,
-            setShow,
-            resetTime,
-            setTimer
-          )
+        onClick={() =>
+          nextQuestion(setCurrentStep, currentStep, setSelect, setKey, setShow)
         }
         className="nextButton"
       >

@@ -1,7 +1,3 @@
-export const resetTime = (setTimer) => {
-  setTimer((prev) => prev + 1);
-};
-
 export const handleSelect = (item, select, correct_answer) => {
   if (select === item && item === correct_answer) {
     return "correct";
@@ -12,17 +8,20 @@ export const handleSelect = (item, select, correct_answer) => {
   }
 };
 
+export const resetTimer = (setKey)=>{
+setKey((prevKey)=> prevKey + 1)
+}
+
 export const nextQuestion = (
   setCurrentStep,
   currentStep,
   setSelect,
-  setShow,
-  resetTime,
-  setTimer,
+  setKey,
+  setShow
   
 ) => {
   setCurrentStep(currentStep + 1);
   setSelect();
-  resetTime(setTimer);
-  setShow(false);
+  resetTimer(setKey)
+  setShow(false)
 };
