@@ -9,6 +9,7 @@ const CountDown = ({setTimer,timer, key}) => {
       setTimer(remainingTime)
     return <div className="timer">{remainingTime}</div>;
   };
+  
   return (
     <div className="counter-circle">
     <CountdownCircleTimer

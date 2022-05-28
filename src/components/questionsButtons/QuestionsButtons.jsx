@@ -10,15 +10,8 @@ const QuestionsButtons = ({
   setKey,
   option: { correct_answer, answers },
 }) => {
-  const {
-    select,
-    setSelect,
-    setStop,
-    setScore,
-    score,
-    currentStep,
-    setCurrentStep,
-  } = useContext(QuizContext);
+  const { select, setSelect, setStop, setScore, score, setCurrentStep } =
+    useContext(QuizContext);
 
   const LimitTime = (item) => {
     if (item === correct_answer && timer === 0) {
@@ -28,18 +21,25 @@ const QuestionsButtons = ({
     }
   };
 
+  const handleScore = (item) => {
+    if (item === correct_answer) {
+      setScore(score + 3);
+    } else {
+      setScore(score - 1);
+    }
+  };
+
   const handleCheck = (item) => {
     setSelect(item);
     setStop(true);
+    handleScore(item);
     if (item === correct_answer) {
-      setScore(score + 3);
       setTimeout(() => {
-        setCurrentStep(currentStep + 1);
-        setSelect();
+        setCurrentStep((prev) => prev + 1);
+        setSelect(null);
         resetTimer(setKey);
       }, 1000);
     } else {
-      setScore(score - 1);
       setStop(false);
       setShow(true);
     }
