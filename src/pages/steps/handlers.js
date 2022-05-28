@@ -12,16 +12,20 @@ export const resetTimer = (setKey)=>{
 setKey((prevKey)=> prevKey + 1)
 }
 
+export const resetStates = (setSelect, setShow, setStop)=>{
+setSelect(null)
+setShow(false)
+setStop(true)
+}
+
 export const nextQuestion = (
   setCurrentStep,
-  currentStep,
   setSelect,
   setKey,
-  setShow
-  
+  setShow,
+  setStop
 ) => {
-  setCurrentStep(currentStep + 1);
-  setSelect();
+  setCurrentStep(prev => prev + 1);
   resetTimer(setKey)
-  setShow(false)
+  resetStates(setSelect, setShow, setStop)
 };

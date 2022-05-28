@@ -1,13 +1,11 @@
 import React, { useContext, useEffect, useState } from "react";
 import { createUserAdapter } from "../../../adapters";
-import QuestionsButtons from "../../../components/questionsButtons/QuestionsButtons";
-import CountDown from "../../../components/countdown/CountDown";
 import { getApi } from "../../../services/public.services";
 import { useFetch } from "../../../hooks/useFetch";
 import textEdit from "../../../utils/util_textEdit";
 import "./Game.css";
-import NextQuestion from "../../../components/nextquestion/NextQuestion";
 import QuizContext from "../../../context/QuizContext";
+import { CountDown, NextQuestion, QuestionsButtons } from "../../../components";
 
 const Game = () => {
   const {currentStep, setCurrentStep} = useContext(QuizContext);

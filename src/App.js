@@ -1,6 +1,6 @@
 import "./App.css";
-import Header from "./components/header/Header";
-import Play from "./components/play/Play";
+import { Header, Play } from "./components";
+
 
 
 function App() {
