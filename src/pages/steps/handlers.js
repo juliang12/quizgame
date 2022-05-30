@@ -8,24 +8,17 @@ export const handleSelect = (item, select, correct_answer) => {
   }
 };
 
-export const resetTimer = (setKey)=>{
-setKey((prevKey)=> prevKey + 1)
-}
-
-export const resetStates = (setSelect, setShow, setStop)=>{
+export const resetStates = (setSelect, setStop, setCompleted)=>{
 setSelect(null)
-setShow(false)
 setStop(true)
+setCompleted(false)
 }
 
-export const nextQuestion = (
-  setCurrentStep,
-  setSelect,
-  setKey,
-  setShow,
-  setStop
-) => {
-  setCurrentStep(prev => prev + 1);
-  resetTimer(setKey)
-  resetStates(setSelect, setShow, setStop)
+export const handleScore = (item, correct_answer, setScore) => {
+  if (item === correct_answer) {
+    setScore(score => score + 3);
+  } else {
+    setScore(score => score - 1);
+  }
 };
+
